@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/style.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <script src="bootstrap-4.5.3-dist/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCCtd8rEw4-hrb6APO-jLgfX976x_wFU4g",
+        authDomain: "mydictionary-395c5.firebaseapp.com",
+        projectId: "mydictionary-395c5",
+        storageBucket: "mydictionary-395c5.appspot.com",
+        messagingSenderId: "1018512355204",
+        appId: "1:1018512355204:web:bedacda7fe3d05b2e277d1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const firestore = firebase.firestore();
+    </script>
+
+    <!-- CKE Editor -->
+    <script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+
+    <!-- Javascript -->
+    <script src="script/script.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Web Dictionary</title>
+</head>
+<body>
+    <div class="dictionary-container">
+        <div class="dictionary-header text-center text-light">
+            <h1>Web Dictionary</h1>
+        </div>
+
+        <div class="dictionary-row">
+            <div class="dictionary-col-1">
+                <div class="dictionary-search-container bg-light">
+                    <div class="dictionary-search-input">
+                        <input type="text" placeholder="Enter key words..." id="" class="form-control">
+                        <button class="btn bg-purple text-light ml-1" type="button">Go</button>
+                    </div>
+        
+                    <div class="new-word-input">
+                        <button class="btn bg-purple text-light ml-4" type="button" onclick="addNewWordTrigger()">Add New Word</button>
+                    </div>
+        
+                    <div class="keyword-lists" id="keyword-lists">
+                        <!-- <div class="keyword-container">
+                            <span>Apple</span>
+                        </div> -->
+        
+                    </div>
+                </div>
+            </div>
+
+            <div class="dictionary-col-2">
+
+                <div class="dictionary-results-container" id="result-nav">
+                    <div class="word-meanings">
+                        <div class="word-searched">
+                            <span class="text-purple search-word-displayed" id="search-word-displayed">Search A Word</span>
+                        </div>
+
+                        <div class="meaning-displayed mt-3" id="meaning-displayed"></div>
+                    </div>
+
+                    <div class="example-sentences-container">
+                        <div class="example-sentence-header">
+                            <h2 class="text-purple">Example sentences</h2>
+                        </div>
+
+                        <div class="example-sentence-list" id="example-sentence-list">
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dictionary-new-word-container" style="display:none;" id="new-word-nav">
+                    <div class="">
+                        <h2>Add New Word</h2>
+                    </div>
+
+                    <div class="new-word-input-container mt-3">
+                        <label>New Word</label>
+                        <input type="text" class="form-control" placeholder="ex: Apple" id="new-word">
+                    </div>
+
+                    <div class="new-word-input-container mt-3">
+                        <label>Word Meaning</label>
+                        <textarea class="form-control" cols="30" rows="10" name="word_meaning"></textarea>
+                    </div>
+
+                    <div class="new-word-input-container mt-3">
+                        <label>Example Sentences</label>
+                        <textarea class="form-control" cols="30" rows="10" name="example_sentences"></textarea>
+                    </div>
+
+                    <div class="new-word-input-container mt-3">
+                        <button class="btn bg-purple text-light" onclick="addNewWord()">Add</button>
+                        <button class="btn btn-secondary" onclick="showWordResults()">Cancel</button>
+                    </div>
+
+                    <!-- CKE EDITOR Plugins -->
+                    <script>
+                        CKEDITOR.replace( 'word_meaning' );
+
+                        CKEDITOR.replace( 'example_sentences' );
+                    </script>
+
+                </div>
+            </div>
+        </div>
+            
+
+        
+
+
+    </div>
+</body>
+</html>
+
+<script>
+    displayCurrentWords();
+</script>
